@@ -1,0 +1,27 @@
+domains
+symbol_list = symbol*
+predicates
+	solution(symbol,symbol,symbol,symbol,symbol,symbol, symbol).
+	member (symbol ,symbol_list ).
+
+clauses
+	member (X , [X|_]).
+	member (X , [_|T]) :-
+		member(X , T).
+	solution(WA , NT , SA , Q , NSW , V , T):-
+		member(WA , [red , green , blue]),
+		member(NT , [red , green , blue]),
+		member(SA , [red , green , blue]),
+		member(Q , [red , green , blue]),
+		member(NSW , [red , green , blue]),
+		member(V, [red , green , blue]),
+		member(T , [red , green , blue]),
+		WA <> NT  , WA <> SA ,
+		NT <> Q , NT <> SA , 
+		SA <> NSW , SA <> Q , SA <> V ,
+		Q <> NSW ,
+		NSW <> V.
+
+goal 
+	solution(WA , NT , SA , Q , NSW , V , T).
+		 

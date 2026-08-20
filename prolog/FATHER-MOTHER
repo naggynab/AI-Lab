@@ -1,0 +1,14 @@
+predicates
+	nondeterm mother(symbol, symbol)     
+	nondeterm husband(symbol, symbol)     
+	nondeterm father(symbol, symbol)
+clauses
+	mother(rani , aditya).
+	husband(suvash , rani).
+
+	father(A , C):-
+		husband(A,B),
+		mother(B,C).
+
+goal
+	father(X , aditya).

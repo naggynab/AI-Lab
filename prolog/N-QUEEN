@@ -1,0 +1,29 @@
+domains 
+	int_list = integer*
+
+predicates 
+	solution(integer , integer , integer , integer).
+	member(integer , int_list).
+	noattack(integer , integer , integer).
+clauses 
+	member(X , [X|_]).
+	member(X , [_|T]):-
+		member(X , T).
+		
+	noattack(X1 , X2, D) :-
+		X1 <> X2 ,
+		Diff = abs(X1 - X2),
+		Diff <> D.
+	
+	solution(A, B , C, D ):-
+		member(A , [1,2,3,4]),
+		member(B , [1,2,3,4]),
+		member(C , [1,2,3,4]),
+		member(D , [1,2,3,4]),
+		
+		noattack(A,B,1) , noattack(A,C,2) , noattack(A,D,3) ,
+		noattack(B,C,1) , noattack(B,D,2),
+		noattack(C,D,1) . 
+		
+goal
+	solution(A,B,C,D).
